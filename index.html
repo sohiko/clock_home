@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界一美しいカレンダー</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1 id="header"></h1>
+        <div id="clock">
+        </div>
+        <div id="clock_child" class="open_close">
+            <button type="button" id="timer" class="" onclick="timer()">　　　　　　　</button>
+            <button type="button" id="stopwatch_button" class="" onclick="stopwatch()">　　　　　　　</button>
+            <button type="button" id="big_clock" class="" onclick="big_clock()">　　　　　　　</button>
+            <div id="timer_set" class="open_close">
+                <input type="number" class="input_timer" id="hours" min="0" placeholder="00" onclick="this.select()" oninput="javascript:if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2" />：<input type="number" class="input_timer" id="minutes" min="0" max="59" placeholder="00" onclick="this.select()" maxlength="2" />：<input type="number" class="input_timer" id="seconds" min="0" max="59" placeholder="00" onclick="this.select()" maxlength="2" /><br>
+                <span id="timer_result">00：00：00</span>
+            </div>
+            <div id="stopwatch" class="open_close">
+                <span id="stopwatch_result">00：00：00.000</span><br>
+                <div id="stopwatch_button">
+                    <button type="button" id="stopwatch_start" onclick="stopwatch_start()">Start</button>
+                    <button type="button" id="stopwatch_stop" onclick="stopwatch_stop()">Stop</button>
+                    <button type="button" id="stopwatch_reset" onclick="stopwatch_reset()">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div id="next-prev-button">
+            <button id="prev" onclick="prev()">‹</button>
+            <button id="next" onclick="next()">›</button>
+        </div>
+        <div id="calendar"></div>
+        <div class="select_button">
+            <button type="button" id="open_close" onclick="open_close()">　　　　　　　</button>
+            <button type="button" id="lucky_country" onclick="lucky_country()">　　　　　　　</button>
+            <button type="button" id="big_clock" onclick="big_clock()">　　　　　　　</button>
+        </div>
+        <div class="country open_close">
+            <span>今日のラッキーカントリー：</span><span class="lucky_country"></span>
+        </div>
+        <style></style>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.css">
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript">weather_value=7;lat = 34.269722;lon =132.915283;inputText1 = "広島県豊田郡大崎上島町";search_add = "広島県豊田郡大崎上島町";</script>
+        <script src="https://sitecreation.co.jp/wp-content/themes/emanon-premium-child/tpl/weather.js"></script>
+        <link id="PageStyleSheet" rel="stylesheet" href="https://sitecreation.co.jp/wp-content/themes/emanon-premium-child/tpl/style.css">
+        <div id="weather-wrapper" class="open_close"><div id="weather1"></div><div id="weather2"></div>
+    </div>
+    <script src="./js/index.js"></script>
+    <script src="./js/seedrandom.min.js" type="text/javascript"></script>
+    <script>
+        function lucky_country() {
+            var country = ["アフガニスタン", "アルバニア", "アルジェリア", "アンドラ", "アンゴラ", "アンティグア・バーブーダ", "アルゼンチン", "アルメニア", "オーストラリア", "オーストリア", "アゼルバイジャン", "バハマ", "バーレーン", "バングラデシュ", "バルバドス", "ベラルーシ", "ベルギー", "ベリーズ", "ベナン", "ブータン", "ボリビア", "ボスニア・ヘルツェゴビナ", "ボツワナ", "ブラジル", "ブルネイ", "ブルガリア", "ブルキナファソ", "ブルンジ", "カンボジア", "カメルーン", "カナダ", "カボベルデ", "中央アフリカ共和国", "チャド", "チリ", "中国", "コロンビア", "コモロ", "コンゴ共和国", "コスタリカ", "コートジボワール", "クロアチア", "キューバ", "キプロス", "チェコ共和国", "デンマーク", "ジブチ", "ドミニカ共和国", "東ティモール", "エクアドル", "エジプト", "エルサルバドル", "赤道ギニア", "エリトリア", "エストニア", "エスワティニ", "エチオピア", "フィジー", "フィンランド", "フランス", "ガボン", "ガンビア", "ジョージア", "ドイツ", "ガーナ", "ギリシャ", "グレナダ", "グアテマラ", "ギニア", "ギニアビサウ", "ガイアナ", "ハイチ", "ホンジュラス", "ハンガリー", "アイスランド", "インド", "インドネシア", "イラン", "イラク", "アイルランド", "イスラエル", "イタリア", "ジャマイカ", "日本", "ヨルダン", "カザフスタン", "ケニア", "キリバス", "コソボ", "クウェート", "キルギススタン", "ラオス", "ラトビア", "レバノン", "レソト", "リベリア", "リビア", "リヒテンシュタイン", "リトアニア", "ルクセンブルク", "マダガスカル", "マラウイ", "マレーシア", "モルディブ", "マリ", "マルタ", "マーシャル諸島", "モーリタニア", "モーリシャス", "メキシコ", "ミクロネシア連邦", "モルドバ", "モナコ", "モンゴル", "モンテネグロ", "モロッコ", "モザンビーク", "ミャンマー", "ナミビア", "ナウル", "ネパール", "オランダ", "ニュージーランド", "ニカラグア", "ニジェール", "ナイジェリア", "北マケドニア", "ノルウェー", "オマーン", "パキスタン", "パラオ", "パナマ", "パプアニューギニア", "パラグアイ", "ペルー", "フィリピン", "ポーランド", "ポルトガル", "カタール", "ルーマニア", "ロシア", "ルワンダ", "サンキット・ネビス", "セントルシア", "サモア", "サンマリノ", "サントメ・プリンシペ", "サウジアラビア", "セネガル", "セルビア", "セーシェル", "シエラレオネ", "シンガポール", "スロバキア", "スロベニア", "ソロモン諸島", "ソマリア", "南アフリカ", "韓国", "南スーダン", "スペイン", "スリナム", "スウェーデン", "スイス", "シリア", "台湾", "タジキスタン", "タンザニア", "タイ", "トーゴ", "トンガ", "トリニダード・トバゴ", "チュニジア", "トルコ", "トルクメニスタン", "ツバル", "ウガンダ", "ウクライナ", "アラブ首長国連邦", "イギリス", "アメリカ合衆国", "ウルグアイ", "ウズベキスタン", "バヌアツ", "バチカン市国", "ベネズエラ", "ベトナム", "イエメン", "ザンビア", "ジンバブエ"];
+            var day = new Date();
+            var date = day.getFullYear+day.getMonth+day.getDate;
+            // Math.seedrandom(date);
+            document.querySelector(".lucky_country").innerHTML = country[Math.floor(Math.random() * country.length)];
+            document.querySelector('.country').classList.toggle("open_close")
+        }
+    </script>
+</body> 
+</html>
