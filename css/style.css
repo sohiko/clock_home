@@ -1,0 +1,265 @@
+@charset "utf-8";
+* {
+    font-family: "YuGothic", "游ゴシック体";
+}
+body {
+    background-color: #2d2a2a;
+}
+.wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+    color: white;
+}
+#header {
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+    margin: 1rem 0 0;
+}
+#clock {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+#clock.big_small {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2d2a2a;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+    font-size: 70px;
+    padding-top: 40vh;
+}
+#clock_child.open_close {
+    display: none;
+}
+#clock_child {
+    position: fixed;
+    z-index: 1;
+    top: 50vh;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+#clock_child button {
+    padding: 0;
+}
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+#timer_set {
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+#timer_set.open_close {
+    display: none;
+}
+#timer_set input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    font: inherit;
+    outline: none;
+    width: 50px;
+    font-size: 40px;
+    text-align: center;
+    caret-color: transparent;
+    transition: 0.5s;
+    color: white;
+}
+#timer_set input:focus {
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+}
+#timer_result {
+    font-size: 30px;
+}
+#stopwatch_result {
+    font-size: 40px;
+}
+#stopwatch_button button {
+    width: 100px;
+}
+#stopwatch.open_close {
+    display: none;
+}
+
+/*カレンダー*/
+#calendar {
+    text-align: center;
+    width: 100%;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    color: white;
+}
+th, td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+/*日曜日*/
+td:first-child {
+    color: red;
+}
+/*土曜日*/
+td:last-child {
+    color: rgb(165, 165, 234);
+}
+/*前後月の日付*/
+td.disabled {
+    color: #ccc;
+}
+/*本日*/
+td.today {
+    background-color: #106b3f;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/*ボタン*/
+#next-prev-button {
+    position: relative;
+    appearance: none;
+    outline: none;
+    padding: 0;
+}
+button{
+    appearance: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+    background: #373635;
+    color: #fff;
+    border-color: transparent;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0;
+}
+#next-prev-button button:hover{
+    background-color: #6d6a64;
+}
+#prev {
+    float: left;
+}
+#next {
+    float: right;
+}
+
+.country {
+    margin-top: 30px;
+    text-align: center;
+}
+.country.open_close {
+    display: none;
+}
+
+.select_button {
+    margin-top: 30px;
+    text-align: center;
+}
+.select_button button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    background-color: #3a3535;
+}
+
+#weather-wrapper {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin: 0 auto;
+    margin-top: 70px;
+    max-width: none !important;
+}
+#weather1, #weather2 {
+    width: 100% !important;
+    max-width: none !important;
+}
+#weather1 {
+    display: block !important;
+    height: 100px;
+    border-left: none !important;
+    border-right:  none !important;
+    border-top: none !important;
+}
+#weather2 ul li {
+    border-bottom: none !important;
+}
+#weather2 ul li:first-child {
+    border-left: none !important;
+}
+#weather2 ul li:last-child {
+    border-right: none !important;
+}
+.w_bg {
+    display: none !important;
+}
+.fa-caret-down {
+    color: rgb(156, 156, 244) !important;
+}
+@media screen and (min-width: 461px) {
+    .sep {
+        justify-content: space-evenly;
+    }
+}
+.day, .d_img, .weather-box {
+    width: calc(100% / 4) !important;
+}
+.snow {
+    text-align: center;
+    font-size: 20px !important;
+    margin: 0 !important;
+    line-height: 100px;
+}
+img.d_img {
+    width: 100px !important;
+    height: 100px !important;
+}
+.max_temp{
+    display:inline-block !important
+}
+.day li {
+    width: 100px;
+}
+.min_temp{
+    display:inline-block !important
+}
+.temp{
+    display:block !important
+}
+.rain_s{
+    display:block !important
+}
+.w_bg{
+    background:linear-gradient(to right,#2d2a2a, #2d2a2a)
+}
+.w_title {
+    display: none !important;
+}
+.weather-c-name {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+}
+#weather-wrapper.open_close {
+    display: none !important;
+}
